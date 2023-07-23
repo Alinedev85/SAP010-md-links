@@ -15,3 +15,4 @@ function readFile(caminhoDoArquivo) {
   });
 }
 
+module.exports = readFile
