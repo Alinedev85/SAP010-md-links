@@ -16,10 +16,9 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "npm test-mocha", 
+    "test": "npm test-mocha",
     "test-mocha": "mocha test/md-links.spec.js"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Alinedev85/SAP010-md-links.git"
@@ -40,6 +39,7 @@
   },
   "dependencies": {
     "@laboratoria/curriculum-parser": "github:Laboratoria/course-parser",
+    "axios": "^1.4.0",
     "chalk": "^4.1.2",
     "md-links": "^0.1.0",
     "node-fetch": "^3.3.1"

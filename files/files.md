@@ -14,4 +14,7 @@ Cotações de moedas:
 
 ## [InfoMoney ](https://www.infomoney.com.br/)
 
+## [google](https://www.google.com.br/)
+
+## [link quebrado](htps://www.google.com.br/)
 
