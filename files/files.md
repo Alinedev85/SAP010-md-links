@@ -10,11 +10,11 @@ Cotações de moedas:
 
 
 
-## [Investing ](https://br.investing.com/economic-calendar/)
+## [Investing ](https://www.investing.com/economic-calendar/)
 
 ## [InfoMoney ](https://www.infomoney.com.br/)
 
 ## [google](https://www.google.com.br/)
 
-## [link quebrado](htps://www.google.com.br/)
+## [link quebrado](https://www.link-quebrado.com/)
 

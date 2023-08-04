@@ -16,8 +16,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "npm test-mocha",
-    "test-mocha": "mocha test/md-links.spec.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -33,14 +32,13 @@
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "babel-jest": "^29.6.1",
-    "chai": "^4.3.7",
-    "jest": "^29.6.1",
-    "mocha": "^10.2.0"
+    "eslint": "^8.46.0",
+    "jest": "^29.6.2"
   },
   "dependencies": {
     "@laboratoria/curriculum-parser": "github:Laboratoria/course-parser",
     "axios": "^1.4.0",
-    "chalk": "^4.1.2",
+    "fs": "^0.0.1-security",
     "md-links": "^0.1.0",
     "node-fetch": "^3.3.1"
   },

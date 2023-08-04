@@ -1,33 +1,41 @@
 const fs = require('fs').promises;
-const axios = require('axios');
+const pathLib = require('path');
+const marked = require('marked');
 
-function readFile(data) {
-  const regex = /(?:(?:https?|ftp):\/\/[^\s/$.?#].[^\s]*)|\[(.+?)\]\((https?:\/\/[^\s/$.?#].[^\s]*)\)/gi;
-  const matches = data.match(regex) || [];
-  return matches.map((match) => {
-    const linkRegex = /\[(.+?)\]\((https?:\/\/[^\s/$.?#].[^\s]*)\)/i;
-    const [,text, href] = linkRegex.exec(match) || [];
-    return {
-      href: href || match,
-      text: text || '',
-    };
-  });
+function encontrarLinksETexto(dados, arquivo) {
+  const regex = /\[([^[\]]+)\]\((https?:\/\/[^\s/$.?#].[^\s]*)\)/g;
+  const correspondencias = dados.match(regex) || [];
+
+  return correspondencias.map((correspondencia) => ({
+    href: correspondencia.replace(regex, '$2').trim(),
+    text: correspondencia.replace(regex, '$1').trim(),
+    arquivo,
+  }));
 }
 
-function validateLink(link, followRedirects = false) {
-  return axios.head(link.href, { maxRedirects: followRedirects ? 5 : 0 })
-    .then((response) => ({
-      ...link,
-      status: response.status,
-      ok: response.status >= 200 && response.status < 400,
-      statusText: response.statusText,
-    }))
-    .catch((error) => ({
-      ...link,
-      status: error.response ? error.response.status : null, 
-      ok: false,
-      statusText: error.response ? error.response.statusText : ' error',
-    }));
+function obterLinksDoArquivoMd(arquivo) {
+  return fs.readFile(arquivo, 'utf8')
+    .then((dados) => encontrarLinksETexto(dados, arquivo));
 }
 
-module.exports = { readFile, validateLink, };
+function mdLinks(caminho) {
+  const caminhoResolvido = pathLib.resolve(caminho);
+  return fs.stat(caminhoResolvido)
+    .then((estatisticas) => {
+      if (estatisticas.isDirectory()) {
+        return fs.readdir(caminhoResolvido)
+          .then((arquivos) => {
+            const promessas = arquivos.map((arquivo) => obterLinksDoArquivoMd(pathLib.join(caminhoResolvido, arquivo)));
+            return Promise.all(promessas)
+              .then((arraysDeLinks) => arraysDeLinks.flat());
+          });
+      } else if (estatisticas.isFile()) {
+        return obterLinksDoArquivoMd(caminhoResolvido);
+      } else {
+        throw new Error('O caminho especificado não é um arquivo ou diretório válido.');
+      }
+    });
+}
+
+module.exports = mdLinks;
+
