@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 const pathLib = require('path');
-const marked = require('marked');
+
 
 function encontrarLinksETexto(dados, arquivo) {
   const regex = /\[([^[\]]+)\]\((https?:\/\/[^\s/$.?#].[^\s]*)\)/g;
@@ -37,5 +37,8 @@ function mdLinks(caminho) {
     });
 }
 
-module.exports = mdLinks;
+
+
+module.exports = { mdLinks, obterLinksDoArquivoMd, encontrarLinksETexto };
+
 
