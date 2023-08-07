@@ -1,4 +1,4 @@
-const mdLinks = require('../src/index');
+const {mdLinks} = require('../src/index');
 const fs = require('fs');
 const axios = require('axios');
 
@@ -10,7 +10,7 @@ const opcoes = {
   estatisticas: args.includes('--stats'),  
 };
 
-function validarLinks(links) {
+function cli(links) {
   const promises = links.map(link => {
     return axios.head(link.href)
       .then(resposta => ({
@@ -41,21 +41,27 @@ function exibirLinks(links) {
 }
 
 mdLinks(caminho)
-  .then(resultado => {
+.then(function(resultado) {
     if (opcoes.validar) {
-      return validarLinks(resultado);
+      return cli(resultado);
     }
     return resultado;
   })
-  .then(resultado => {
+  .then(function(resultado) {
     if (opcoes.estatisticas) {
       const totalDeLinks = resultado.length;
-      const linksUnicos = new Set(resultado.map(link => link.href)).size;
+      const linksUnicos = new Set(resultado.map(function(link) {
+        return link.href;
+      })).size;
       console.log(`Total: ${totalDeLinks}`);
       console.log(`Únicos: ${linksUnicos}`);
       if (opcoes.validar) {
-        const linksValidos = resultado.filter(link => link.ok === 'ok').length;
-        const linksQuebrados = resultado.filter(link => link.ok === 'falha').length;
+        const linksValidos = resultado.filter(function(link) {
+          return link.ok === 'ok';
+        }).length;
+        const linksQuebrados = resultado.filter(function(link) {
+          return link.ok === 'falha';
+        }).length;
         console.log(`Válidos: ${linksValidos}`);
         console.log(`Quebrados: ${linksQuebrados}`);
       }
@@ -63,6 +69,6 @@ mdLinks(caminho)
       exibirLinks(resultado);
     }
   })
-  .catch(erro => {
+  .catch(function(erro) {
     console.error(erro.message);
   });
