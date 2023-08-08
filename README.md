@@ -18,7 +18,7 @@ O pacote md-links-aaf é uma ferramenta para verificar links em arquivos Markdow
 
 Para começar a usar o md-links-aaf, você precisa tê-lo instalado no seu projeto. Para fazer isso, abra o terminal e execute o seguinte comando:
 
-npm install md-links-aaf
+npm i md-links-aaf
 
 
 ## 3. Uso
