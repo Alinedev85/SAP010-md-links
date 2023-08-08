@@ -25,7 +25,7 @@ npm i md-links-aaf
 
 Após instalar o md-links-aaf, você pode usa-lo no seu projeto da seguinte maneira:
 
-#1- Importe o pacote:
+#1- **Importe o pacote:**
 
 No arquivo JavaScript do seu projeto, importe o pacote usando o require ou import, dependendo do padrão que você está usando:
 
@@ -48,7 +48,15 @@ mdLinks(markdownFilePath)
     console.error('Ocorreu um erro:', error);
   });
 
+# Opções Adicionais:
 
+O md-links-aaf suporta as seguintes opções para customizar a saída:
+
+--validate: Verifica o status dos links, indicando se eles estão funcionando ou quebrados.
+
+--stats: Exibe estatísticas sobre os links, incluindo o total de links e a quantidade de links únicos.
+
+--validate --stats: Combina as duas opções acima, exibindo estatísticas e verificando o status dos links.
 
 
 ## 4. Licença
