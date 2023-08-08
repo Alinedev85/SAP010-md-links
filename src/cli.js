@@ -34,7 +34,7 @@ function exibirLinks(links) {
     console.log(
       `href: ${link.href}\n` +
       `text: ${link.text}\n` +
-      `file: ${link.file}\n` +
+      `files: ${link.arquivo}\n` +
       `${informacoesStatus}\n`
     );
   });

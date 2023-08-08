@@ -9,7 +9,7 @@ function encontrarLinksETexto(dados, arquivo) {
   return correspondencias.map((correspondencia) => ({
     href: correspondencia.replace(regex, '$2').trim(),
     text: correspondencia.replace(regex, '$1').trim(),
-    arquivo,
+    arquivo: arquivo
   }));
 }
 
