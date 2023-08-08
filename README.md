@@ -6,12 +6,7 @@
 * [2. Instalação](#2-Instalação)
 * [3. Uso](#3-Uso)
 * [4. Licença](#4-Licença)
-* [5. Critérios de aceitação mínimos do projeto](#5-criterios-de-aceitação-mínimos-do-projeto)
-* [6. Entregáveis](#6-entregáveis)
-* [7. Hacker edition](#7-hacker-edition)
-* [8. Guias, dicas e leituras complementares](#8-guias-dicas-e-leituras-complementares)
-* [9. Checklist](#9-checklist)
-* [10. Dividindo o problema - babies steps](#10-dividindo-o-problema)
+* [5. Documentação](#5-Documentação)
 
 ***
 
