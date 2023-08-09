@@ -72,5 +72,5 @@ Para maiores informações acesse:
 
 [ Documentação WIKI](https://github.com/Alinedev85/SAP010-md-links/wiki)
 
-[ Documentação npm](https://www.npmjs.com/package/md-links--aaf)
+[ Documentação oficial npm](https://www.npmjs.com/package/md-links--aaf)
 
